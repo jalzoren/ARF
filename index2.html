@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full-Screen Image</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body, html {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            background-color: black; 
+        }
+        .container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        .bg-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            cursor: pointer; /* Makes it clear that the image is clickable */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img id="image" class="bg-image" src="d.jpg" alt="Background Image" onclick="toggleImage()">
+    </div>
+    
+    <script>
+        let images = ["d.jpg", "d1.jpg"];
+        let index = 0;
+
+        function toggleImage() {
+            let imgElement = document.getElementById('image');
+            index = (index + 1) % images.length;
+            imgElement.src = images[index] + "?v=" + new Date().getTime(); 
+        }
+    </script>
+</body>
+</html>
